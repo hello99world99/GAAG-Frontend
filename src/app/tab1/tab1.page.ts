@@ -26,10 +26,10 @@ export class Tab1Page {
         {
           name: 'promotion',
           options: [
-            {text: 'Python', value: 'Python language'},
-            {text: 'Java', value: 'Java language'},
-            {text: 'JavaScript', value: 'JavaScript language'},
-            {text: 'TypeScript', value: 'TypeScript language'}
+            {text: '2021', value: 'Formation sur dev web & mobile'},
+            {text: '2022', value: 'AWS cloud'},
+            {text: '2023', value: 'L\'avenir nous dira'},
+            {text: '2024', value: 'L\'avenir nous dira'}
           ]
         }
       ],
