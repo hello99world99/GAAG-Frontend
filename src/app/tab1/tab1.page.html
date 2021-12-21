@@ -1,9 +1,9 @@
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="">
   <ion-text class="title">
     <h1>Veuillez choisir le critère de la repartion du groupe</h1>
   </ion-text>
-  <datalist>
-
-  </datalist>
+  <ion-item class="">
+    <ion-button color="warning" expand="block" (click)="showContent()">{{content}}</ion-button>
+  </ion-item>
 </ion-content>
