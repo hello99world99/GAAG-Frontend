@@ -1,9 +1,78 @@
 
 <ion-content [fullscreen]="true" class="">
   <ion-text class="title">
-    <h1>Veuillez choisir le critère de la repartion du groupe</h1>
+    <h4>Veuillez choisir le critère de la repartion du groupe</h4>
   </ion-text>
-  <ion-item class="">
-    <ion-button color="warning" expand="block" (click)="showContent()">{{content}}</ion-button>
+  <ion-button color="warning" expand="block" (click)="showContent()">{{content}}</ion-button>
+  <ion-item>
+    <ion-input type="text" class="form-input" placeholder="Nbr groupe" required></ion-input>
+    <ion-input type="text" class="form-input" placeholder="Nbr personne" required></ion-input>
   </ion-item>
+  <ion-item>
+    <ion-select placeholder="Trier">
+      <ion-select-option value="Croissant">Croissant</ion-select-option>
+      <ion-select-option value="Aleatoire">Aléatoire</ion-select-option>
+    </ion-select>
+    <ion-select placeholder="Repartir">
+      <ion-select-option value="Defaut">Défaut</ion-select-option>
+      <ion-select-option value="Exces">Excès</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-button color="primary" expand="block">Repartir</ion-button>
+  <ion-card>
+    <ion-card-content>
+      <ion-slides pager>
+        <ion-slide>
+          <ion-list>
+            <ion-list-header>
+              Groupe 1
+            </ion-list-header>
+            <ion-item>John Doe</ion-item>
+            <ion-item>John Doe</ion-item>
+            <ion-item>John Doe</ion-item>
+          </ion-list>
+        </ion-slide>
+        <ion-slide>
+          <ion-list>
+            <ion-list-header>
+              Groupe 2
+            </ion-list-header>
+            <ion-item>John Doe</ion-item>
+            <ion-item>John Doe</ion-item>
+            <ion-item>John Doe</ion-item>
+          </ion-list>
+        </ion-slide>
+        <ion-slide>
+          <ion-list>
+            <ion-list-header>
+              Groupe 3
+            </ion-list-header>
+            <ion-item>John Doe</ion-item>
+            <ion-item>John Doe</ion-item>
+            <ion-item>John Doe</ion-item>
+          </ion-list>
+        </ion-slide>
+        <ion-slide>
+          <ion-list>
+            <ion-list-header>
+              Groupe 4
+            </ion-list-header>
+            <ion-item>John Doe</ion-item>
+            <ion-item>John Doe</ion-item>
+            <ion-item>John Doe</ion-item>
+          </ion-list>
+        </ion-slide>
+        <ion-slide>
+          <ion-list>
+            <ion-list-header>
+              Groupe 5
+            </ion-list-header>
+            <ion-item>John Doe</ion-item>
+            <ion-item>John Doe</ion-item>
+            <ion-item>John Doe</ion-item>
+          </ion-list>
+        </ion-slide>
+      </ion-slides>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
