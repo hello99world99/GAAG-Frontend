@@ -1,19 +1,64 @@
 <ion-content [fullscreen]="true">
+
+  <ion-slides pager>
+    <ion-slide>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title size="small" color="warning">Ajouter un apprenant</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item>
+            <ion-label position="floating" color="warning">Nom</ion-label>
+            <ion-input type="text" name="fullName"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating" color="warning">Email</ion-label>
+            <ion-input type="text" name="email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating" color="warning">Numéro</ion-label>
+            <ion-input type="text" name="phone"></ion-input>
+          </ion-item>
+          <ion-button name="promotion" color="warning" expand="block" (click)="showContent()">{{content}}</ion-button>
+          <ion-button color="warning" expand="block">Ajouter</ion-button>
+          <ion-button color="danger" expand="block">Annuler</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title size="small" color="warning">Ajouter une promotion</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item>
+            <ion-label position="floating" color="warning">Formation</ion-label>
+            <ion-input type="text" name="email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating" color="warning">Promotion</ion-label>
+            <ion-input type="date" name="phone"></ion-input>
+          </ion-item>
+          <ion-button color="warning" expand="block">Ajouter</ion-button>
+          <ion-button color="danger" expand="block">Annuler</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button>
       <ion-icon name="share"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="top">
-      <ion-fab-button><ion-icon name="logo-vimeo"></ion-icon></ion-fab-button>
+      <ion-fab-button>
+        <ion-icon name="logo-vimeo"></ion-icon>
+      </ion-fab-button>
     </ion-fab-list>
     <ion-fab-list side="start">
-      <ion-fab-button><ion-icon name="logo-facebook"></ion-icon></ion-fab-button>
-    </ion-fab-list>
-    <ion-fab-list side="top">
-      <ion-fab-button><ion-icon name="logo-instagram"></ion-icon></ion-fab-button>
-    </ion-fab-list>
-    <ion-fab-list side="top">
-      <ion-fab-button><ion-icon name="logo-twitter"></ion-icon></ion-fab-button>
+      <ion-fab-button>
+        <ion-icon name="logo-facebook"></ion-icon>
+      </ion-fab-button>
     </ion-fab-list>
   </ion-fab>
 </ion-content>
