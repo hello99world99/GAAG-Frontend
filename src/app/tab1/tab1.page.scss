@@ -6,8 +6,8 @@ ion-content{
 
   ion-select {
     width: 100%;
-    color: #545ca7;
-    --placeholder-color: #971e49;
+    color: orange;
+    --placeholder-color: orange;
     --placeholder-opacity: 1;
     justify-content: center;
   }
@@ -18,21 +18,16 @@ ion-content{
   }
 
   ion-select::part(placeholder) {
-    color: #20a08a;
+    color: orange;
     opacity: 1;
   }
 
-  ion-select::part(placeholder)::first-letter {
-    font-size: 24px;
-    font-weight: 500;
-  }
-
   ion-select::part(text) {
-    color: #545ca7;
+    color: orange;
   }
 
   ion-select::part(icon) {
-    color: #971e49;
+    color: orange;
     opacity: 1;
   }
 }
