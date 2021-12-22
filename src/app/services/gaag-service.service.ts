@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,14 +6,20 @@ import { Injectable } from '@angular/core';
 })
 
 export class GaagServiceService {
+  url = 'http://localhost:8088/api/';
+  constructor(public http: HttpClient) { }
 
-  constructor() { }
 
-  public addApprenant(apprenant){
-    console.log(apprenant);
+
+
+  addApprenant(apprenant: any){
+    
+    return this.http.post(this.url+"apprenant/ajouter", apprenant);
   }
 
-  public getPromotionList(): any {
-    throw new Error('Method not implemented.');
+  public getPromotionList() {
+    return this.http.get(this.url+"promotion/list");
   }
+
+
 }

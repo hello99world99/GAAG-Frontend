@@ -7,21 +7,24 @@
           <ion-card-title size="small" color="warning">Ajouter un apprenant</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <ion-item>
-            <ion-label position="floating" color="warning">Nom</ion-label>
-            <ion-input type="text" name="fullName"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating" color="warning">Email</ion-label>
-            <ion-input type="text" name="email"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating" color="warning">Numéro</ion-label>
-            <ion-input type="text" name="phone"></ion-input>
-          </ion-item>
-          <ion-button name="promotion" color="warning" expand="block" (click)="showContent()">{{content}}</ion-button>
-          <ion-button color="warning" expand="block">Ajouter</ion-button>
-          <ion-button color="danger" expand="block">Annuler</ion-button>
+          <ion-form [formGroup]="formGroup" (ngSubmit)="ajoutApprenant(formGroup)" novalidate>
+            <ion-item>
+              <ion-label position="floating" color="warning">Nom</ion-label>
+              <ion-input type="text" formControlName="fullName" required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating" color="warning">Email</ion-label>
+              <ion-input type="email" formControlName="email" required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating" color="warning">Numéro</ion-label>
+              <ion-input type="text" formControlName="phone" required></ion-input>
+            </ion-item>
+            <ion-button name="promotion" color="warning" expand="block" (click)="getAllPromotions()">{{content}}</ion-button>
+            <ion-button color="warning" type="submit" expand="block">Ajouter</ion-button>
+            <ion-button color="danger" expand="block">Annuler</ion-button>
+          </ion-form>
+          
         </ion-card-content>
       </ion-card>
     </ion-slide>
