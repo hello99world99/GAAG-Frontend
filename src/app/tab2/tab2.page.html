@@ -7,24 +7,24 @@
           <ion-card-title size="small" color="warning">Ajouter un apprenant</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <ion-form [formGroup]="formGroup" (ngSubmit)="ajoutApprenant(formGroup)" novalidate>
+          <form #data="ngForm" (ngSubmit)="ajoutApprenant(data)" novalidate>
             <ion-item>
               <ion-label position="floating" color="warning">Nom</ion-label>
-              <ion-input type="text" formControlName="fullName" required></ion-input>
+              <ion-input type="text" name="fullName" ngModel required></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating" color="warning">Email</ion-label>
-              <ion-input type="email" formControlName="email" required></ion-input>
+              <ion-input type="email" name="email" ngModel required></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating" color="warning">Numéro</ion-label>
-              <ion-input type="text" formControlName="phone" required></ion-input>
+              <ion-input type="text" name="phone" ngModel required></ion-input>
             </ion-item>
-            <ion-button name="promotion" color="warning" expand="block" (click)="showContent()">{{content}}</ion-button>
+            <ion-button name="promotion" ngModel color="warning" expand="block" (click)="showContent()">{{content}}</ion-button>
             <ion-button color="warning" type="submit" expand="block">Ajouter</ion-button>
             <ion-button color="danger" expand="block">Annuler</ion-button>
-          </ion-form>
-          
+          </form>
+
         </ion-card-content>
       </ion-card>
     </ion-slide>
@@ -34,14 +34,14 @@
           <ion-card-title size="small" color="warning">Ajouter une promotion</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <form [formGroup]="form" (ngSubmit)="ajoutPromotion()">
+          <form [formGroup]="form" (ngSubmit)="ajoutPromotion(form)">
             <ion-item>
               <ion-label position="floating" color="warning">Formation</ion-label>
               <ion-input type="text" formControlName="formation"></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating" color="warning">Promotion</ion-label>
-              <ion-input type="date" formControlName="date"></ion-input>
+              <ion-input type="date" formControlName="annee"></ion-input>
             </ion-item>
             <ion-button color="warning" type="submit"  expand="block">Ajouter</ion-button>
             <ion-button color="danger" expand="block">Annuler</ion-button>
