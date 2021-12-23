@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PickerController } from '@ionic/angular';
 import { PickerOptions } from '@ionic/core';
+import { GaagServiceService } from '../services/gaag-service.service';
 
 @Component({
   selector: 'app-tab1',
@@ -9,7 +10,14 @@ import { PickerOptions } from '@ionic/core';
 })
 export class Tab1Page {
   public content = 'Promotion';
-  constructor(private pickerCtrl: PickerController) {}
+  public promotions: any = [];
+  data: any = {};
+  constructor(
+    private pickerCtrl: PickerController,
+    private mService: GaagServiceService
+    ) {
+    this.promotions = this.mService.getPromotionList();
+  }
 
   public async showContent() {
     const opts: PickerOptions = {

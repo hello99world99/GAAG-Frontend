@@ -17,8 +17,9 @@ export class GaagServiceService {
     return this.http.put(this.url+'apprenant/modifer/'+id, data);
   }
 
-  public listerApprennants() {
-    return this.http.get(this.url+'apprenant/list');
+  public listerApprennants(promo: any) {
+    console.log(promo);
+    return this.http.get(this.url+'apprenant/list/promo='+promo);
   }
 
   public supprimerApprennants(id: any) {
