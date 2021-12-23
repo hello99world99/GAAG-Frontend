@@ -73,7 +73,7 @@ export class Tab2Page implements OnInit{
             // {text: '2022', value: 'AWS cloud'},
             // {text: '2023', value: 'L\'avenir nous dira'},
             // {text: '2024', value: 'L\'avenir nous dira'}
-            // this.promotions
+           
           ]
         }
       ],
