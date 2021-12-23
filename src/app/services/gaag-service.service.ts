@@ -33,6 +33,7 @@ export class GaagServiceService {
     return this.http.get(this.url+"promotion/list");
   }
   public ajouterPromotion(promo:any) {
+    console.log("Ajout Promotion....");
     return this.http.post(this.url+"promotion/ajouter/", promo);
   }
   public modifierPromotion(id:any) {

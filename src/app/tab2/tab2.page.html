@@ -34,16 +34,19 @@
           <ion-card-title size="small" color="warning">Ajouter une promotion</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <ion-item>
-            <ion-label position="floating" color="warning">Formation</ion-label>
-            <ion-input type="text" name="email"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating" color="warning">Promotion</ion-label>
-            <ion-input type="date" name="phone"></ion-input>
-          </ion-item>
-          <ion-button color="warning" expand="block">Ajouter</ion-button>
-          <ion-button color="danger" expand="block">Annuler</ion-button>
+          <form [formGroup]="form" (ngSubmit)="ajoutPromotion()">
+            <ion-item>
+              <ion-label position="floating" color="warning">Formation</ion-label>
+              <ion-input type="text" formControlName="formation"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating" color="warning">Promotion</ion-label>
+              <ion-input type="date" formControlName="date"></ion-input>
+            </ion-item>
+            <ion-button color="warning" type="submit"  expand="block">Ajouter</ion-button>
+            <ion-button color="danger" expand="block">Annuler</ion-button>
+
+          </form>
         </ion-card-content>
       </ion-card>
     </ion-slide>
