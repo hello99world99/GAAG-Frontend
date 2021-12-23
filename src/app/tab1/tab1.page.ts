@@ -11,15 +11,37 @@ import { GaagServiceService } from '../services/gaag-service.service';
 export class Tab1Page {
   public content = 'Promotion';
   public promotions: any = [];
+  public groupeListe: any;
+  public result = [];
   data: any = {};
   constructor(
     private pickerCtrl: PickerController,
     private mService: GaagServiceService
     ) {
-    this.promotions = this.mService.getPromotionList();
+    this.mService.getPromotionList().subscribe(
+      (data: any) => {
+        this.promotions = data;
+        for (const promo of this.promotions) {
+          const text = promo.annee;
+          const value = promo.formation;
+          //this.result.push({text: text, value: value});
+        }
+      }
+    );
+  }
+
+  public repartir(repartir: any){
+    console.log(repartir.value);
+    this.mService.repartir(repartir, this.content).subscribe(
+      (data: any) => {
+        this.groupeListe = data;
+        console.log(this.groupeListe);
+      }
+    );
   }
 
   public async showContent() {
+    console.log(this.promotions);
     const opts: PickerOptions = {
       buttons: [
         {
@@ -34,10 +56,8 @@ export class Tab1Page {
         {
           name: 'promotion',
           options: [
-            {text: '2021', value: 'Formation sur dev web & mobile'},
-            {text: '2022', value: 'AWS cloud'},
-            {text: '2023', value: 'L\'avenir nous dira'},
-            {text: '2024', value: 'L\'avenir nous dira'}
+            {text: '02-05-2021', value: 'Formation sur dev web & mobile'},
+            {text: '02-05-2022', value: 'AWS cloud'},
           ]
         }
       ],
