@@ -4,6 +4,7 @@ import { PickerController } from '@ionic/angular';
 import { PickerOptions } from '@ionic/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -22,7 +23,8 @@ export class Tab2Page implements OnInit{
     private service: GaagServiceService,
     private pickerCtrl: PickerController,
     private formBulder: FormBuilder,
-    public toastController : ToastController
+    public toastController : ToastController,
+    public router: Router
     ) {
 
 
@@ -43,6 +45,7 @@ export class Tab2Page implements OnInit{
       const toast = await this.toastController.create({
         message: 'Promotion ajouter avec succes.',
         duration: 2000
+      
       });
       toast.present();
     }
@@ -67,12 +70,12 @@ export class Tab2Page implements OnInit{
       }
     );
 
-
-
   }
 
   public ajoutApprenant(data: any){
     console.log(data.value);
+
+    this.router.navigateByUrl("/tabs/tab1");
   }
 
 
@@ -118,6 +121,7 @@ export class Tab2Page implements OnInit{
       (data)=>{
         console.log("Ajout de la Promotion....");
         this.presentToast();
+        this.router.navigateByUrl("/tabs/tab1");
       }
       
       );
