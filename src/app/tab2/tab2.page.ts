@@ -3,6 +3,7 @@ import { GaagServiceService } from '../services/gaag-service.service';
 import { PickerController } from '@ionic/angular';
 import { PickerOptions } from '@ionic/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -11,21 +12,39 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class Tab2Page implements OnInit{
 
   public content = 'Promotion';
-  public promotions: any;
+  public promotions: any = [];
   private formGroup: FormGroup;
   public form: FormGroup;
   public listPromos: any = [];
   public contenu = {};
+  public index : any= 0;
   constructor(
     private service: GaagServiceService,
     private pickerCtrl: PickerController,
     private formBulder: FormBuilder,
+    public toastController : ToastController
     ) {
+
+
+
+     for (var index in this.promotions) {
+      console.log(index); // prints indexes: 0, 1, 2, 3
+    
+      console.log(this.promotions[index]); // prints elements: 10, 20, 30, 40
+    }
 
       this.form =  this.formBulder.group({
         formation: ['', [Validators.required, Validators.minLength(2)]],
         annee: ['', [Validators.required]],
       });
+    }
+
+    async presentToast() {
+      const toast = await this.toastController.create({
+        message: 'Promotion ajouter avec succes.',
+        duration: 2000
+      });
+      toast.present();
     }
     
   ngOnInit(): void {
@@ -44,21 +63,18 @@ export class Tab2Page implements OnInit{
     this.service.getPromotionList().subscribe(
       (data)=>{
         this.promotions = data;
+        console.log(this.promotions)
       }
     );
-    for(let i=0; i<this.promotions.length; i++){
-      this.contenu[i]['text'] = this.promotions[i].annee;
-      this.listPromos.push(this.contenu[i]['text'])
-   }
+
+
+
   }
 
   public ajoutApprenant(data: any){
     console.log(data.value);
   }
 
-  public ajoutPromotion(data: any){
-    console.log(data.value);
-  }
 
   public async showContent() {
     const opts: PickerOptions = {
@@ -76,20 +92,14 @@ export class Tab2Page implements OnInit{
         {
           name: 'promotion',
           options: [
-<<<<<<< HEAD
           
-            //{text: textAnnee, value: valueFormation}
-=======
-            {text: this.promotions[0].annee, value: this.promotions.formation}
->>>>>>> 52e1a967731ea7456d4d9d9fc1998a808b3873c2
-            // {text: '2021', value: 'Formation sur dev web & mobile'},
-            // {text: '2022', value: 'AWS cloud'},
-            // {text: '2023', value: 'L\'avenir nous dira'},
-            // {text: '2024', value: 'L\'avenir nous dira'}
-<<<<<<< HEAD
+
+            //{text: this.promotions[this.index].annee, value: "hello"}
+            {text: '2021', value: 'Formation sur dev web & mobile'},
+            {text: '2022', value: 'AWS cloud'},
+            {text: '2023', value: 'L\'avenir nous dira'},
+            {text: '2024', value: 'L\'avenir nous dira'}
            
-=======
->>>>>>> 52e1a967731ea7456d4d9d9fc1998a808b3873c2
           ]
         }
       ],
@@ -107,6 +117,7 @@ export class Tab2Page implements OnInit{
     this.service.ajouterPromotion(this.form.value).subscribe(
       (data)=>{
         console.log("Ajout de la Promotion....");
+        this.presentToast();
       }
       
       );
