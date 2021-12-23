@@ -9,38 +9,33 @@ export class GaagServiceService {
   url = 'http://localhost:8088/api/';
   constructor(public http: HttpClient) { }
 
-
-
-
   addApprenant(apprenant: any){
-    
-    return this.http.post(this.url+"apprenant/ajouter", apprenant);
+    return this.http.post(this.url+'apprenant/ajouter', apprenant);
   }
 
-  public modifierApprennants(id:any) {
-    return this.http.put(this.url+"apprenant/modifer/", id);
+  public modifierApprennants(id: any, data: any) {
+    return this.http.put(this.url+'apprenant/modifer/'+id, data);
   }
 
   public listerApprennants() {
-    return this.http.get(this.url+"apprenant/list");
+    return this.http.get(this.url+'apprenant/list');
   }
 
-  public supprimerApprennants(id:any) {
-    return this.http.delete(this.url+"apprenant/supprimer/", id);
+  public supprimerApprennants(id: any) {
+    return this.http.delete(this.url+'apprenant/supprimer/'+id);
   }
 
   public getPromotionList() {
-    return this.http.get(this.url+"promotion/list");
+    return this.http.get(this.url+'promotion/list');
   }
-  public ajouterPromotion(promo:any) {
-    return this.http.post(this.url+"promotion/ajouter/", promo);
+  public ajouterPromotion(promo: any) {
+    return this.http.post(this.url+'promotion/ajouter/', promo);
   }
-  public modifierPromotion(id:any) {
-    return this.http.put(this.url+"promotion/modifier/", id);
+  public modifierPromotion(id: any, data: any){
+    return this.http.put(this.url+'promotion/modifier/'+id, data);
   }
-  public supprimerPromotion(id:any) {
-    return this.http.delete(this.url+"promotion/supprimer/", id);
+  public supprimerPromotion(id: any) {
+    return this.http.delete(this.url+'promotion/supprimer/'+id);
   }
-
 
 }
