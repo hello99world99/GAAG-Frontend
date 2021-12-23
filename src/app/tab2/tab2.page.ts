@@ -12,7 +12,7 @@ export class Tab2Page implements OnInit{
 
   private formGroup : FormGroup;
   public content = 'Promotion';
-  private promotions: any;
+  private promotions:any =[];
   constructor(
     private service: GaagServiceService,
     private pickerCtrl: PickerController,
@@ -22,6 +22,7 @@ export class Tab2Page implements OnInit{
   ngOnInit(): void {
 
     this.promotions =  this.getAllPromotions();
+    
     console.log(this.promotions);
     
     this.formGroup =  this.formBulder.group({
@@ -43,16 +44,17 @@ export class Tab2Page implements OnInit{
     this.service.getPromotionList().subscribe(
       (data)=>{
         
-        console.log(data);
-
+        
         this.promotions = data
+        console.log(this.promotions);
+
       }
     )
   }
   
 
   public async showContent() {
-    console.log(this.promotions);
+    //console.log(this.promotions["annee"]);
     const opts: PickerOptions = {
       
       
@@ -69,6 +71,7 @@ export class Tab2Page implements OnInit{
         {
           name: 'promotion',
           options: [
+            {text: this.promotions.annee, value: this.promotions.formation}
             // {text: '2021', value: 'Formation sur dev web & mobile'},
             // {text: '2022', value: 'AWS cloud'},
             // {text: '2023', value: 'L\'avenir nous dira'},
