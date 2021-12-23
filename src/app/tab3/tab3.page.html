@@ -1,17 +1,10 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Liste des apprenants
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="small">Liste des apprenants</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar color="warning">
+    <ion-text class="ion-text-center">
+      <h5>Liste des apprenants de la promotion</h5>
+    </ion-text>
+    <ion-button color="dark" expand="block">{{promotion}}</ion-button>
+  </ion-toolbar>
   <ion-list>
     <ion-item-sliding>
       <ion-item>

@@ -42,8 +42,11 @@ export class Tab2Page implements OnInit{
     console.log(data.value);
   }
 
+  public ajoutPromotion(data: any){
+    console.log(data.value);
+  }
+
   public async showContent() {
-    //console.log(this.promotions["annee"]);
     const opts: PickerOptions = {
       buttons: [
         {
@@ -58,12 +61,11 @@ export class Tab2Page implements OnInit{
         {
           name: 'promotion',
           options: [
-            {text: this.promotions.annee, value: this.promotions.formation}
+            {text: this.promotions[0].annee, value: this.promotions.formation}
             // {text: '2021', value: 'Formation sur dev web & mobile'},
             // {text: '2022', value: 'AWS cloud'},
             // {text: '2023', value: 'L\'avenir nous dira'},
             // {text: '2024', value: 'L\'avenir nous dira'}
-            // this.promotions
           ]
         }
       ],
