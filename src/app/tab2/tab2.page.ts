@@ -61,11 +61,8 @@ export class Tab2Page implements OnInit{
         {
           name: 'promotion',
           options: [
-            {text: this.promotions[0].annee, value: this.promotions.formation}
-            // {text: '2021', value: 'Formation sur dev web & mobile'},
-            // {text: '2022', value: 'AWS cloud'},
-            // {text: '2023', value: 'L\'avenir nous dira'},
-            // {text: '2024', value: 'L\'avenir nous dira'}
+            {text: '02-05-2021', value: 'Formation sur dev web & mobile'},
+            {text: '02-05-2022', value: 'AWS cloud'},
           ]
         }
       ],

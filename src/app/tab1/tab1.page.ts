@@ -35,7 +35,6 @@ export class Tab1Page {
     this.mService.repartir(repartir, this.content).subscribe(
       (data: any) => {
         this.groupeListe = data;
-        console.log(this.groupeListe);
       }
     );
   }

@@ -18,7 +18,6 @@ export class Tab3Page {
   }
 
   public deleteApprenant(apprenant: any){
-    console.log(apprenant.id);
     this.mService.supprimerApprennants(apprenant.id);
   }
 
@@ -37,7 +36,8 @@ export class Tab3Page {
         {
           name: 'promotion',
           options: [
-            {text: '02-05-2021', value: '02-05-2021'},
+            {text: '02-05-2021', value: 'Formation sur dev web & mobile'},
+            {text: '02-05-2022', value: 'AWS cloud'},
           ]
         }
       ],
