@@ -1,92 +1,52 @@
-
 <ion-content [fullscreen]="true" class="">
-  <ion-toolbar color="warning">
-    <ion-text class="ion-text-center">
-      <h5><h4>Veuillez choisir les critères de la repartion</h4></h5>
-    </ion-text>
-    <ion-button color="dark" expand="block" (click)="showContent()">{{content}}</ion-button>
-  </ion-toolbar>
-  <ion-grid>
-    <ion-row class="ion-align-items-center">
-      <ion-col size="12">
-        <ion-item>
-          <ion-input type="text" class="form-input" placeholder="Nbr groupe" required></ion-input>
-          <ion-input type="text" class="form-input" placeholder="Nbr personne" required></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col size="12">
-        <ion-item>
-          <ion-select placeholder="Trier">
-            <ion-select-option value="Croissant">Croissant</ion-select-option>
-            <ion-select-option value="Aleatoire">Aléatoire</ion-select-option>
-          </ion-select>
-          <ion-select placeholder="Repartir">
-            <ion-select-option value="Defaut">Défaut</ion-select-option>
-            <ion-select-option value="Exces">Excès</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-col>
-      <ion-col size="12">
-        <ion-button color="primary" expand="block">Repartir</ion-button>
-      </ion-col>
-      <ion-col size="12">
-        <ion-card color="warning">
-          <ion-card-content color="warning">
-            <ion-slides pager>
-              <ion-slide>
-                <ion-list>
-                  <ion-list-header color="warning">
-                    Groupe 1
-                  </ion-list-header>
-                  <ion-item color="warning">John Doe</ion-item>
-                  <ion-item color="warning">John Doe</ion-item>
-                  <ion-item color="warning">John Doe</ion-item>
-                </ion-list>
-              </ion-slide>
-              <ion-slide>
-                <ion-list>
-                  <ion-list-header color="warning">
-                    Groupe 2
-                  </ion-list-header>
-                  <ion-item color="warning">John Doe</ion-item>
-                  <ion-item color="warning">John Doe</ion-item>
-                  <ion-item color="warning">John Doe</ion-item>
-                </ion-list>
-              </ion-slide>
-              <ion-slide>
-                <ion-list>
-                  <ion-list-header color="warning">
-                    Groupe 3
-                  </ion-list-header>
-                  <ion-item color="warning">John Doe</ion-item>
-                  <ion-item color="warning">John Doe</ion-item>
-                  <ion-item color="warning">John Doe</ion-item>
-                </ion-list>
-              </ion-slide>
-              <ion-slide>
-                <ion-list>
-                  <ion-list-header color="warning">
-                    Groupe 4
-                  </ion-list-header>
-                  <ion-item color="warning">John Doe</ion-item>
-                  <ion-item color="warning">John Doe</ion-item>
-                  <ion-item color="warning">John Doe</ion-item>
-                </ion-list>
-              </ion-slide>
-              <ion-slide>
-                <ion-list>
-                  <ion-list-header color="warning">
-                    Groupe 5
-                  </ion-list-header>
-                  <ion-item color="warning">John Doe</ion-item>
-                  <ion-item color="warning">John Doe</ion-item>
-                  <ion-item color="warning">John Doe</ion-item>
-                </ion-list>
-              </ion-slide>
-            </ion-slides>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <form #data="ngForm" (ngSubmit)="repartir(data)">
+    <ion-toolbar color="warning">
+      <ion-text class="ion-text-center">
+        <h5>
+          <h4>Veuillez choisir les critères de la repartion</h4>
+        </h5>
+      </ion-text>
+      <ion-button color="dark" name="annee" [(ngModel)]="content" expand="block" (click)="showContent()">{{content}}</ion-button>
+    </ion-toolbar>
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12">
+          <ion-item>
+            <ion-input type="text" name="g" ngModel class="form-input" placeholder="Nbr groupe" required></ion-input>
+            <ion-input type="text" name="a" ngModel class="form-input" placeholder="Nbr personne" required></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item>
+            <ion-select placeholder="Trier">
+              <ion-select-option value="Croissant">Croissant</ion-select-option>
+              <ion-select-option value="Aleatoire">Aléatoire</ion-select-option>
+            </ion-select>
+            <ion-select placeholder="Repartir">
+              <ion-select-option value="Defaut">Défaut</ion-select-option>
+              <ion-select-option value="Exces">Excès</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12">
+          <ion-button type="submit" color="primary" expand="block">Repartir</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+  <ion-card color="warning">
+    <ion-card-content color="warning">
+      <ion-slides pager>
+        <ion-slide *ngFor="let groupe of groupeListe; let index = index">
+          <ion-list>
+            <ion-list-header color="warning">
+              Groupe {{index+1}}
+            </ion-list-header>
+            <ion-item color="warning" *ngFor="let p of groupe; let index = index">{{ p.apprenant.nomComplet }}</ion-item>
+          </ion-list>
+        </ion-slide>
+      </ion-slides>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

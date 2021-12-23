@@ -52,7 +52,6 @@ export class Tab3Page {
           this.apprenantList = result;
         }
       );
-      console.log(this.apprenantList);
     });
   }
 
