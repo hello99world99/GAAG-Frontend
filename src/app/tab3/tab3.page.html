@@ -6,8 +6,11 @@
     <ion-button color="dark" expand="block" (click)="showContent()">{{content}}</ion-button>
   </ion-toolbar>
   <ion-list>
-    <ion-item-sliding *ngFor="let apprenant of apprenantList">
-      <ion-item>
+    <ion-item-sliding *ngFor="let apprenant of apprenantList; let index = index">
+      <ion-item *ngIf="index%2===0" color="warning">
+        <ion-label>{{apprenant?.nomComplet + ' '+ apprenant?.telephone}}</ion-label>
+      </ion-item>
+      <ion-item *ngIf="index%2!==0" color="dark">
         <ion-label>{{apprenant?.nomComplet + ' '+ apprenant?.telephone}}</ion-label>
       </ion-item>
       <ion-item-options side="start">

@@ -22,16 +22,13 @@ export class Tab1Page {
       (data: any) => {
         this.promotions = data;
         for (const promo of this.promotions) {
-          const text = promo.annee;
-          const value = promo.formation;
-          //this.result.push({text: text, value: value});
+          this.result.push({text: promo.annee, value: promo.formation});
         }
       }
     );
   }
 
   public repartir(repartir: any){
-    console.log(repartir.value);
     this.mService.repartir(repartir, this.content).subscribe(
       (data: any) => {
         this.groupeListe = data;
@@ -40,7 +37,6 @@ export class Tab1Page {
   }
 
   public async showContent() {
-    console.log(this.promotions);
     const opts: PickerOptions = {
       buttons: [
         {
@@ -54,10 +50,7 @@ export class Tab1Page {
       columns: [
         {
           name: 'promotion',
-          options: [
-            {text: '02-05-2021', value: 'Formation sur dev web & mobile'},
-            {text: '02-05-2022', value: 'AWS cloud'},
-          ]
+          options: this.result
         }
       ],
     };
