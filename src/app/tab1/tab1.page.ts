@@ -22,6 +22,7 @@ export class Tab1Page {
       (data: any) => {
         this.promotions = data;
         for (const promo of this.promotions) {
+        
           this.result.push({text: promo.annee, value: promo.formation});
         }
       }
