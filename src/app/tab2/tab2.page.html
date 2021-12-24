@@ -1,11 +1,10 @@
 <ion-content [fullscreen]="true">
   <ion-slides pager>
     <ion-slide>
-      <ion-card>
+      <div class="container">
         <ion-card-header>
           <ion-card-title size="small" color="warning">Ajouter un apprenant</ion-card-title>
         </ion-card-header>
-        <ion-card-content>
           <form #data="ngForm" (ngSubmit)="ajoutApprenant(data)" novalidate>
             <ion-item>
               <ion-label position="floating" color="warning">Nom</ion-label>
@@ -23,28 +22,22 @@
             <ion-button color="warning" type="submit" expand="block">Ajouter</ion-button>
             <ion-button color="danger" expand="block">Annuler</ion-button>
           </form>
-
-        </ion-card-content>
-      </ion-card>
+      </div>
     </ion-slide>
     <ion-slide>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title size="small" color="warning">Ajouter une promotion</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <ion-item>
-            <ion-label position="floating" color="warning">Formation</ion-label>
-            <ion-input type="text" name="email"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating" color="warning">Promotion</ion-label>
-            <ion-input type="date" name="phone"></ion-input>
-          </ion-item>
-          <ion-button color="warning" expand="block">Ajouter</ion-button>
-          <ion-button color="danger" expand="block">Annuler</ion-button>
-        </ion-card-content>
-      </ion-card>
+      <div class="container">
+            <ion-card-title size="small" color="warning">Ajouter une promotion</ion-card-title>
+            <ion-item>
+              <ion-label position="floating" color="warning">Formation</ion-label>
+              <ion-input type="text" name="email"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating" color="warning">Promotion</ion-label>
+              <ion-input type="date" name="phone"></ion-input>
+            </ion-item>
+            <ion-button color="warning" expand="block">Ajouter</ion-button>
+            <ion-button color="danger" expand="block">Annuler</ion-button>
+      </div>
     </ion-slide>
   </ion-slides>
 
