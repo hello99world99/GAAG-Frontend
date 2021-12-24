@@ -30,7 +30,7 @@
           <ion-card-title size="small" color="warning">Ajouter une promotion</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <form [formGroup]="form" (ngSubmit)="ajoutPromotion(form)">
+          <form [formGroup]="form" (ngSubmit)="ajoutPromotion()">
             <ion-item>
               <ion-label position="floating" color="warning">Formation</ion-label>
               <ion-input type="text" formControlName="formation"></ion-input>

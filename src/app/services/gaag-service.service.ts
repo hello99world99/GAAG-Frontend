@@ -6,13 +6,15 @@ import { Injectable } from '@angular/core';
 
 export class GaagServiceService {
 
-  url = 'http://localhost:8088/api/';
+  
+  url=  'http://localhost:8080/api/'
+
 
   constructor(public http: HttpClient) { }
 
   public addApprenant(apprenant: any){
     console.log(apprenant);
-    return this.http.post(this.url+'apprenant/ajouter', apprenant);
+    return this.http.post(this.url+'apprenant/ajouter/', apprenant);
   }
 
   public modifierApprennants(id: any, dataA: any) {
@@ -31,9 +33,9 @@ export class GaagServiceService {
   public getPromotionList() {
     return this.http.get(this.url+'promotion/list');
   }
-  public ajouterPromotion(promo : any) {
-    console.log("Ajout Promotion....", promo);
-    return this.http.post(this.url+'promotion/ajouter/', promo , {responseType:"text"});
+  ajouterPromotion(promotion: any) {
+    console.log("Ajout Promotion....", promotion);
+    return this.http.post(this.url+"promotion/ajouter/",promotion , {responseType:"text"});
   }
   public modifierPromotion(id: any, dataP: any){
     return this.http.put(this.url+'promotion/modifier/'+id, dataP);
