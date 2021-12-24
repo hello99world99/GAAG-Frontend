@@ -13,7 +13,6 @@ export class Tab1Page {
   public promotions: any = [];
   public groupeListe: any;
   public result = [];
-  data: any = {};
   constructor(
     private pickerCtrl: PickerController,
     private mService: GaagServiceService

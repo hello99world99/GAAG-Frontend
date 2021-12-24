@@ -14,15 +14,17 @@ export class Tab2Page implements OnInit{
 
   public content = 'Promotion';
   public promotions: any = [];
+  public result: any = [];
   private formGroup: FormGroup;
   public form: FormGroup;
   public listPromos: any = [];
   public contenu = {};
   public index : any= 0;
   constructor(
-    private service: GaagServiceService,
+    private mService: GaagServiceService,
     private pickerCtrl: PickerController,
     private formBulder: FormBuilder,
+<<<<<<< HEAD
     public toastController : ToastController,
     public router: Router
     ) {
@@ -52,6 +54,20 @@ export class Tab2Page implements OnInit{
     
   ngOnInit(): void {
     this.promotions =  this.getAllPromotions();
+=======
+    ) {
+      this.mService.getPromotionList().subscribe(
+        (data: any) => {
+          this.promotions = data;
+          for (const promo of this.promotions) {
+            this.result.push({text: promo.annee, value: promo.formation});
+          }
+        }
+      );
+    }
+  ngOnInit(): void {
+    console.log(this.promotions);
+>>>>>>> b8d90a26bf7c8e61ed5a3a0cee1bcbe7b19d47e2
     this.formGroup =  this.formBulder.group({
       fullName: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
@@ -62,6 +78,7 @@ export class Tab2Page implements OnInit{
     console.log(this.contenu)
   }
 
+<<<<<<< HEAD
   getAllPromotions(){
     this.service.getPromotionList().subscribe(
       (data)=>{
@@ -74,6 +91,12 @@ export class Tab2Page implements OnInit{
 
   public ajoutApprenant(data: any){
     console.log(data.value);
+=======
+  public ajoutApprenant(data: any){
+    data.value.promotion = this.content;
+    this.mService.addApprenant(data.value);
+  }
+>>>>>>> b8d90a26bf7c8e61ed5a3a0cee1bcbe7b19d47e2
 
     this.router.navigateByUrl("/tabs/tab1");
   }
@@ -94,6 +117,7 @@ export class Tab2Page implements OnInit{
       columns: [
         {
           name: 'promotion',
+<<<<<<< HEAD
           options: [
           
 
@@ -104,6 +128,9 @@ export class Tab2Page implements OnInit{
             {text: '2024', value: 'L\'avenir nous dira'}
            
           ]
+=======
+          options: this.result
+>>>>>>> b8d90a26bf7c8e61ed5a3a0cee1bcbe7b19d47e2
         }
       ],
     };
