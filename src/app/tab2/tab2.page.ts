@@ -27,6 +27,7 @@ export class Tab2Page implements OnInit{
     private mService: GaagServiceService,
     private pickerCtrl: PickerController,
     private formBulder: FormBuilder,
+    private toast : ToastController,
     private router: Router
     ) {
       this.mService.getPromotionList().subscribe(
@@ -115,7 +116,14 @@ export class Tab2Page implements OnInit{
       );
   }
   presentToast() {
-    
+     this.toast.create({
+      message: 'Ajout effectuer avec succes.',
+      duration: 2000
+    }).then((toastData) => {
+      console.log(toastData);
+      toastData.present();
+    });
   }
+  
 
 }
