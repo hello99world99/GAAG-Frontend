@@ -54,7 +54,7 @@ export class GaagServiceService {
   }
 
   public repartir(repartir: any, content: any) {
-    return this.http.get(this.url+'groupe/repartir/promotion='+content+'&g='+repartir.value.g+'&a='+repartir.value.a);
+    return this.http.get(this.url+'groupe/repartir/promotion='+content+'&g='+repartir.g+'&a='+repartir.a+'&t='+repartir.t);
   }
 
 }

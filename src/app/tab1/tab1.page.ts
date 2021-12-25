@@ -28,7 +28,8 @@ export class Tab1Page {
   }
 
   public repartir(repartir: any){
-    this.mService.repartir(repartir, this.promotion).subscribe(
+    console.log(repartir.value);
+    this.mService.repartir(repartir.value, this.promotion).subscribe(
       (data: any) => {
         this.groupeListe = data;
       }
