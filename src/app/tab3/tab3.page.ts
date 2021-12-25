@@ -11,10 +11,20 @@ export class Tab3Page {
 
   public apprenantList: any;
   public content = 'Promotion';
+  public promotions: any = [];
+  public result = [];
   constructor(
     private mService: GaagServiceService,
     private pickerCtrl: PickerController
     ) {
+      this.mService.getPromotionList().subscribe(
+        (data: any) => {
+          this.promotions = data;
+          for (const promo of this.promotions) {
+            this.result.push({text: promo.annee.split('-').reverse().join('-'), value: promo.formation});
+          }
+        }
+      );
   }
 
   public deleteApprenant(apprenant: any){
@@ -35,10 +45,7 @@ export class Tab3Page {
       columns: [
         {
           name: 'promotion',
-          options: [
-            {text: '02-05-2021', value: 'Formation sur dev web & mobile'},
-            {text: '02-05-2022', value: 'AWS cloud'},
-          ]
+          options: this.result
         }
       ],
     };
