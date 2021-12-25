@@ -31,12 +31,20 @@ export class GaagServiceService {
   public getPromotionList() {
     return this.http.get(this.url+'promotion/list');
   }
+
   public ajouterPromotion(promo: any) {
-    return this.http.post(this.url+'promotion/ajouter/', promo);
+    console.log(promo.value);
+    this.http.post(this.url+'promotion/ajouter', promo.value).subscribe(
+      (response: any) => {
+        console.log(response);
+      }
+    );
   }
+
   public modifierPromotion(id: any, dataP: any){
     return this.http.put(this.url+'promotion/modifier/'+id, dataP);
   }
+
   public supprimerPromotion(id: any) {
     return this.http.delete(this.url+'promotion/supprimer/'+id);
   }

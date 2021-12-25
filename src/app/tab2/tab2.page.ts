@@ -49,18 +49,18 @@ export class Tab2Page implements OnInit{
   }
 
   public ajoutPromotion(data: any){
-    console.log(data.value);
+    this.mService.ajouterPromotion(data);
   }
 
   public async showContent() {
     const opts: PickerOptions = {
       buttons: [
         {
-          text: 'Cancel',
+          text: 'Annuler',
           role: 'Cancel',
         },
         {
-          text: 'Done',
+          text: 'Fait',
         }
       ],
       columns: [

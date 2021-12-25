@@ -26,17 +26,19 @@
     </ion-slide>
     <ion-slide>
       <div class="container">
+        <form #data="ngForm" (ngSubmit)="ajoutPromotion(data)">
           <ion-card-title size="small" color="warning">Ajouter une promotion</ion-card-title>
           <ion-item>
             <ion-label position="floating" color="warning">Formation</ion-label>
-            <ion-input type="text" name="formation"></ion-input>
+            <ion-input type="text" name="formation" ngModel></ion-input>
           </ion-item>
           <ion-item>
             <ion-label position="floating" color="warning">Promotion</ion-label>
             <ion-input type="date" name="annee" ngModel></ion-input>
           </ion-item>
-          <ion-button color="warning" expand="block">Ajouter</ion-button>
+          <ion-button type="submit" color="warning" expand="block">Ajouter</ion-button>
           <ion-button color="danger" expand="block">Annuler</ion-button>
+        </form>
       </div>
     </ion-slide>
   </ion-slides>
