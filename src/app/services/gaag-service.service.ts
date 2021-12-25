@@ -12,7 +12,11 @@ export class GaagServiceService {
 
   public addApprenant(apprenant: any){
     console.log(apprenant);
-    return this.http.post(this.url+'apprenant/ajouter', apprenant);
+    return this.http.post(this.url+'apprenant/ajouter', apprenant).subscribe(
+      (response: any) => {
+        console.log(response);
+      }
+    );
   }
 
   public modifierApprennants(id: any, dataA: any) {

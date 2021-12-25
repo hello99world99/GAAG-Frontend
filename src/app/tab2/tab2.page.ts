@@ -29,7 +29,7 @@ export class Tab2Page implements OnInit{
         (data: any) => {
           this.promotions = data;
           for (const promo of this.promotions) {
-            this.result.push({text: promo.annee, value: promo.formation});
+            this.result.push({text: promo.annee, value: promo});
           }
         }
       );
@@ -44,7 +44,11 @@ export class Tab2Page implements OnInit{
   }
 
   public ajoutApprenant(){
-    this.apprenant.promotion = this.content;
+    for (const promo of this.result) {
+      if (promo.text === this.content){
+        this.apprenant.promotion = promo.value;
+      }
+    }//toReverse.split('-').reverse().join('-');
     this.mService.addApprenant(this.apprenant);
   }
 
