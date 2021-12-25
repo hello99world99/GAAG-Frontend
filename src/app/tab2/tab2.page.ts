@@ -13,6 +13,12 @@ export class Tab2Page implements OnInit{
   public content = 'Promotion';
   public promotions: any = [];
   public result: any = [];
+  public apprenant = {
+    email: '',
+    telephone: '',
+    nomComplet: '',
+    promotion: ''
+  };
   private formGroup: FormGroup;
   constructor(
     private mService: GaagServiceService,
@@ -31,15 +37,15 @@ export class Tab2Page implements OnInit{
   ngOnInit(): void {
     console.log(this.promotions);
     this.formGroup =  this.formBulder.group({
-      fullName: ['', [Validators.required, Validators.minLength(2)]],
+      nomComplet: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      phone: ['', [Validators.required,  Validators.pattern('^[0-9]+$')]]
+      telephone: ['', [Validators.required,  Validators.pattern('^[0-9]+$')]]
     });
   }
 
-  public ajoutApprenant(data: any){
-    data.value.promotion = this.content;
-    this.mService.addApprenant(data.value);
+  public ajoutApprenant(){
+    this.apprenant.promotion = this.content;
+    this.mService.addApprenant(this.apprenant);
   }
 
   public ajoutPromotion(data: any){

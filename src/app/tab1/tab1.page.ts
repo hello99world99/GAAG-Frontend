@@ -9,7 +9,7 @@ import { GaagServiceService } from '../services/gaag-service.service';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  public content = 'Promotion';
+  public promotion = 'Promotion';
   public promotions: any = [];
   public groupeListe: any;
   public result = [];
@@ -28,7 +28,7 @@ export class Tab1Page {
   }
 
   public repartir(repartir: any){
-    this.mService.repartir(repartir, this.content).subscribe(
+    this.mService.repartir(repartir, this.promotion).subscribe(
       (data: any) => {
         this.groupeListe = data;
       }
@@ -57,7 +57,7 @@ export class Tab1Page {
     picker.present();
     picker.onDidDismiss().then( async data => {
       const col = await picker.getColumn('promotion');
-      this.content = col.options[col.selectedIndex].text;
+      this.promotion = col.options[col.selectedIndex].text;
     });
   }
 
