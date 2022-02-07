@@ -1,30 +1,30 @@
+<ion-toolbar slot="fixed" color="warning">
+  <ion-text class="ion-text-center">
+    <h5>
+      <h4>Veuillez choisir les critères de la repartion</h4>
+    </h5>
+  </ion-text>
+</ion-toolbar>
 <ion-content [fullscreen]="true" class="">
   <form #data="ngForm" (ngSubmit)="repartir(data)">
-    <ion-toolbar slot="fixed" color="warning">
-      <ion-text class="ion-text-center">
-        <h5>
-          <h4>Veuillez choisir les critères de la repartion</h4>
-        </h5>
-      </ion-text>
-      <ion-button color="dark" name="promotion" [(ngModel)]="promotion" expand="block" (click)="showContent()">{{promotion}}</ion-button>
-    </ion-toolbar>
+    <ion-button color="dark" name="promotion" [(ngModel)]="repartition.promotion" expand="block" (click)="showContent()">{{ repartition.promotion }}</ion-button>
     <ion-grid>
       <ion-row class="ion-align-items-center">
         <ion-col size="12">
           <ion-item>
-            <ion-input type="text" name="g" ngModel class="form-input" placeholder="Nbr groupe" required></ion-input>
-            <ion-input type="text" name="a" ngModel class="form-input" placeholder="Nbr personne" required></ion-input>
+            <ion-input type="text" name="nbrGroups" class="form-input" placeholder="Nbr groupe" [(ngModel)]="repartition.nbrGroups" required></ion-input>
+            <ion-input type="text" name="nbrPerson" class="form-input" placeholder="Nbr personne" [(ngModel)]="repartition.nbrPerson" required></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="12">
           <ion-item>
-            <ion-select name="t" ngModel placeholder="Trier">
-              <ion-select-option ngModel value="ordre">Ordre</ion-select-option>
-              <ion-select-option ngModel value="aleatoire">Aléatoire</ion-select-option>
+            <ion-select name="trie" [(ngModel)]="repartition.trie" ngModel placeholder="Trier">
+              <ion-select-option value="ordre">Ordre</ion-select-option>
+              <ion-select-option value="aleatoire">Aléatoire</ion-select-option>
             </ion-select>
-            <ion-select placeholder="Repartir">
-              <ion-select-option value="Defaut">Défaut</ion-select-option>
-              <ion-select-option value="Exces">Excès</ion-select-option>
+            <ion-select name="method" [(ngModel)]="repartition.method" ngModel placeholder="Repartir">
+              <ion-select-option value="defaut">Défaut</ion-select-option>
+              <ion-select-option value="exces">Excès</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-col>
@@ -35,7 +35,7 @@
     </ion-grid>
   </form>
 
-  <ion-card color="warning">
+  <ion-card class="ion-no-padding" color="warning" *ngIf="groupeListe">
     <ion-card-content color="warning">
       <ion-slides pager>
         <ion-slide *ngFor="let groupe of groupeListe; let index = index">
@@ -49,6 +49,7 @@
       </ion-slides>
     </ion-card-content>
   </ion-card>
+
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button>
       <ion-icon name="add"></ion-icon>

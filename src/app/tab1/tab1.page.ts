@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PickerController } from '@ionic/angular';
 import { PickerOptions } from '@ionic/core';
+import { Repartition } from '../models/models';
 import { GaagServiceService } from '../services/gaag-service.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { GaagServiceService } from '../services/gaag-service.service';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  public promotion = 'Promotion';
+  public repartition = new Repartition();
   public promotions: any = [];
   public groupeListe: any;
   public result = [];
@@ -28,8 +29,7 @@ export class Tab1Page {
   }
 
   public repartir(repartir: any){
-    console.log(repartir.value);
-    this.mService.repartir(repartir.value, this.promotion).subscribe(
+    this.mService.repartir(repartir.value, this.repartition.promotion).subscribe(
       (data: any) => {
         this.groupeListe = data;
       }
@@ -58,7 +58,7 @@ export class Tab1Page {
     picker.present();
     picker.onDidDismiss().then( async data => {
       const col = await picker.getColumn('promotion');
-      this.promotion = col.options[col.selectedIndex].text;
+      this.repartition.promotion = col.options[col.selectedIndex].text;
     });
   }
 
