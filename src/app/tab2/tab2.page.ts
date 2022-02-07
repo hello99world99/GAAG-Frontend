@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GaagServiceService } from '../services/gaag-service.service';
 import { PickerController } from '@ionic/angular';
 import { PickerOptions } from '@ionic/core';
+import { Apprenant } from '../models/models';
 
 @Component({
   selector: 'app-tab2',
@@ -10,10 +11,9 @@ import { PickerOptions } from '@ionic/core';
 })
 export class Tab2Page implements OnInit{
 
-  public content = 'Promotion';
   public promotions: any = [];
   public result: any = [];
-  public apprenant: any;
+  public apprenant = new Apprenant();
 
   constructor(
     private mService: GaagServiceService,
@@ -33,12 +33,9 @@ export class Tab2Page implements OnInit{
   }
 
   public ajoutApprenant(data){
-    for (const promo of this.result) {
-      if (promo.text === this.content){
-        this.apprenant.promotion = promo.value;
-      }
-    }//toReverse.split('-').reverse().join('-');
-    this.mService.addApprenant(this.apprenant);
+    this.mService.addApprenant(data.value);
+    data.reset();
+    this.apprenant.promotion = 'Promotion';
   }
 
   public ajoutPromotion(data: any){
@@ -67,7 +64,7 @@ export class Tab2Page implements OnInit{
     picker.present();
     picker.onDidDismiss().then( async data => {
       const col = await picker.getColumn('promotion');
-      this.content = col.options[col.selectedIndex].text;
+      this.apprenant.promotion = col.options[col.selectedIndex].text;
     });
   }
 

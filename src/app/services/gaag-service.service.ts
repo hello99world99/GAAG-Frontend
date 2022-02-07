@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Apprenant } from '../models/models';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,11 +11,12 @@ export class GaagServiceService {
 
   constructor(public http: HttpClient) { }
 
-  public addApprenant(apprenant: any){
-    console.log(apprenant);
-    return this.http.post(this.url+'apprenant/ajouter', apprenant).subscribe(
-      (response: any) => {
-        console.log(response);
+  public async addApprenant(data: any){
+    const apprenant = data;
+    await this.getPromotionByDate(data.promotion).subscribe(
+      (promotion) => {
+        apprenant.promotion = promotion;
+        this.http.post<Apprenant>(this.url+'apprenant/ajouter', apprenant);
       }
     );
   }
@@ -24,12 +26,15 @@ export class GaagServiceService {
   }
 
   public listerApprennants(promo: any) {
-    console.log(promo);
     return this.http.get(this.url+'apprenant/list/promo='+promo);
   }
 
   public supprimerApprennants(id: any) {
     return this.http.delete(this.url+'apprenant/supprimer/'+id);
+  }
+
+  public getPromotionByDate(promotion: any) {
+    return this.http.get(this.url+'promotion/get/date='+promotion);
   }
 
   public getPromotionList() {

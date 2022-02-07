@@ -1,4 +1,5 @@
 <ion-content [fullscreen]="true">
+
   <ion-slides pager>
     <ion-slide>
       <div class="container">
@@ -8,17 +9,17 @@
           <form #data="ngForm" (ngSubmit)="ajoutApprenant(data)" novalidate>
             <ion-item>
               <ion-label position="floating" color="warning">Nom</ion-label>
-              <ion-input type="text" name="nomComplet" ngModel required></ion-input>
+              <ion-input type="text" name="nomComplet" [(ngModel)]="apprenant.nomComplet" required></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating" color="warning">Email</ion-label>
-              <ion-input type="email" name="email" ngModel required></ion-input>
+              <ion-input type="email" name="email" [(ngModel)]="apprenant.email" required></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating" color="warning">Numéro</ion-label>
-              <ion-input type="text" name="telephone" ngModel required></ion-input>
+              <ion-input type="text" name="telephone" [(ngModel)]="apprenant.telephone" required></ion-input>
             </ion-item>
-            <ion-button name="promotion" ngModel color="warning" expand="block" (click)="showContent()">{{content}}</ion-button>
+            <ion-button name="promotion" [(ngModel)]="apprenant.promotion" color="warning" expand="block" (click)="showContent()">{{apprenant.promotion}}</ion-button>
             <ion-button color="warning" type="submit" expand="block">Ajouter</ion-button>
             <ion-button color="danger" expand="block">Annuler</ion-button>
           </form>
